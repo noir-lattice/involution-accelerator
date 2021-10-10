@@ -7,5 +7,9 @@
 
 配置ormconfig.json
 
+启动服务
+```bash
+npm run start
+```
 
 开始卷
