@@ -45,8 +45,11 @@
       Materialize.toast(msg, 3000);
     }
 
+    let pathname = window.location.pathname;
+    let enterpriseName = /.*enterprise\/(.*)/g.exec(pathname)[1]
+
     window.doneSubject = function (subjectId, questionId, tries) {
-      $.get('enterprise//done/' + subjectId).then(function (res) {
+      $.get('enterprise/' + enterpriseName + '/done/' + subjectId).then(function (res) {
         if (res.code != 0) {
           Materialize.toast(res.msg, 3000);
           return;
