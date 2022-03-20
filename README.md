@@ -4,6 +4,7 @@
 
 ## 开启你的内卷服务
 执行init.sql
+执行enterprise.sql
 
 配置ormconfig.json
 

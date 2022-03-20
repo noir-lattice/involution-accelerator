@@ -12,6 +12,29 @@ export class SubjectController {
     return { subjects: resp, _subjects: JSON.stringify(resp) };
   }
 
+  @Get('/enterprise/:name')
+  @Render('enterprise')
+  async enterprise(@Param('name') name: string) {
+    const resp = await this.subjectServiec.randomEnterpriseSubject(name);
+    return { subjects: resp, _subjects: JSON.stringify(resp) };
+  }
+
+  @Get('/enterprise/:name/done/:id')
+  async enterpriseDone(@Param('name') name: string, @Param('id') id: number) {
+    const error = await this.subjectServiec.finishiedEnterprise(id, name);
+    if (!!error) {
+      return {
+        code: -1,
+        msg: error,
+      };
+    }
+
+    return {
+      code: 0,
+      msg: 'DONE',
+    };
+  }
+
   @Get('/done/:id')
   async done(@Param('id') id: number) {
     const error = await this.subjectServiec.finishied(id);
